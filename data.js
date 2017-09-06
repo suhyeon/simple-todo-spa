@@ -32,6 +32,17 @@ function updateTodo(id, source) {
   }
 }
 
+function rewriteTodo(id , new_title){
+  const todo = todos.find(item => item.id === id)
+  if(todo){
+    todo.title = new_title
+    console.log(todo.title)
+    console.log('rewrite')
+    return todo
+  }else{
+    throw new Error('해당 요소를 찾을 수 없습니다.')
+  }
+}
 function deleteTodo(id) {
   const index = todos.findIndex(item => item.id === id)
   if (index !== -1) {
@@ -43,5 +54,6 @@ module.exports = {
   todos,
   addTodo,
   updateTodo,
+  rewriteTodo,
   deleteTodo
 }
