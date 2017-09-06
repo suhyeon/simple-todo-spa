@@ -6,6 +6,7 @@ function render({ target, templatePath, dataPath, queryFrom = document }) {
   const dataPromise = axios.get(dataPath)
 
   // 둘다 완료되면...
+  //all 이면 promise저 데이터들을 배열로 묶어서 전송
   return Promise.all([templatePromise, dataPromise])
     .then(([templateRes, dataRes]) => {
       // 템플릿 렌더링하기
