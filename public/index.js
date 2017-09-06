@@ -32,6 +32,18 @@
             loadTodos()
           })
         })
+
+        const update = todoItem.querySelector('.todo-update')
+        const write = document.getElementsByClassName('todo-item-update')[`${id}`-1].value
+
+        update.addEventListener('click', e => {
+          e.preventDefault()
+          const target = e.currentTarget
+          console.log(target.value, id-1)
+          axios.put(`/api/todos/${id}`, target.value).then(res => {
+            loadTodos()
+          })
+        })
       })
     })
   }
