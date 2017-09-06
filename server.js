@@ -33,10 +33,35 @@ app.patch('/api/todos/:id', jsonMiddleware, (req, res) => {
     res.end()
     return // 바로 라우트 핸들러를 종료합니다.
   }
+  //const todo = data.rewriteTodo(id, title)
   const todo = data.updateTodo(id, req.body)
   res.send(todo)
 })
+app.put('/api/todos/:id', jsonMiddleware, (req,res) => {
+  let id = parseInt(req.params.id)
+  const title = req.body
+  console.log(title)
+  if (title) {
+    const todo = data.rewriteTodo(id, title)
+    console.log(todo)
+    console.log('put')
+    res.send(todo)
+  } else {
+    res.status(400)
+    res.end()
+    return
+  }
+ // try{
+   // id = parseInt(req.params.id)
 
+  //}catch (e){
+   // res.status(400)
+    //res.end()
+    //return
+ // }
+  //const todo = data.rewriteTodo(id,title)
+
+})
 app.delete('/api/todos/:id', jsonMiddleware, (req, res) => {
   let id;
   try {
